@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Sneakers Store</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #2C3E50;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #1ABC9C;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #1ABC9C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .search-bar button:hover {
+            background-color: #16A085;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #2C3E50;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .product-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .product-item h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #34495E;
+        }
+
+        .product-item p {
+            font-size: 1em;
+            color: #1ABC9C;
+            font-weight: bold;
+        }
+
+        .product-item button {
+            background-color: #1ABC9C;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-item button:hover {
+            background-color: #16A085;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Cart Section */
+        .cart {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart h3 {
+            margin-bottom: 15px;
+            color: #2C3E50;
+        }
+
+        .cart ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cart ul li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart p {
+            font-weight: bold;
+        }
+
+        /* Payment Section */
+        .payment {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment h3 {
+            margin-bottom: 10px;
+            color: #2C3E50;
+        }
+
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: #1ABC9C;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Search for products...">
+        <button onclick="searchProducts()">Search</button>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h2>Our Collection</h2>
+        <div class="product-grid" id="product-grid">
+            <div class="product-item" data-name="NIKE" data-price="60000">
+                <h3>NIKE</h3>
+                <img src="air nike.jpg" alt="NIKE">
+                <p>TZS 60,000</p>
+                <button onclick="toggleProduct(this)">Add to Cart</button>
+            </div>
+            <div>
+                <div class="product-item" data-name="JORDAN 6" data-price="70000">
+                    <h3>JORDAN 6</h3>
+                    <img src="air jord 6.jpg" alt="JORDAN 6">
+                    <p>TZS 70,000</p>
+                    <button onclick="toggleProduct(this)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-item" data-name="AIR NIKE" data-price="50000">
+                <h3> JORDAN 4</h3>
+                <img src="jord 4.jpg" alt="AIR NIKE">
+                <p>TZS 50,000</p>
+                <button onclick="toggleProduct(this)">Add to Cart</button>
+            </div>
+            <div class="product-item" data-name="JORDAN 1" data-price="50000">
+                <h3>JORDAN 1</h3>
+                <img src="jord 1.jpg" alt="JORDAN 1">
+                <p>TZS 50,000</p>
+                <button onclick="toggleProduct(this)">Add to Cart</button>
+            </div>
+            <div class="product-item" data-name="AIR FORCE" data-price="55000">
+                <h3>AIR FORCE</h3>
+                <img src="air force.jpg" alt="AIR FORCE">
+                <p>TZS 55,000</p>
+                <button onclick="toggleProduct(this)">Add to Cart</button>
+            </div>
+            <!-- Add more product items here -->
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart">
+        <h3>Your Cart</h3>
+        <ul id="cart-items"></ul>
+        <p>Total: TZS <span id="total-price">0</span></p>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment" id="payment-section" style="display: none;">
+        <h3>Payment Options</h3>
+        <form id="payment-form">
+            <div>
+                <input type="radio" id="mobile-money" name="payment-method" value="Mobile Money">
+                <label for="mobile-money">Mobile Money</label>
+            </div>
+            <div>
+                <input type="radio" id="credit-card" name="payment-method" value="Credit Card">
+                <label for="credit-card">Credit Card</label>
+            </div>
+            <div>
+                <input type="radio" id="cash" name="payment-method" value="Cash on Delivery">
+                <label for="cash">Cash on Delivery</label>
+            </div>
+            <button type="submit" style="margin-top: 10px;">Confirm Payment</button>
+        </form>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" style="height: 300px; margin: 20px auto; max-width: 800px; border-radius: 10px; overflow: hidden;">
+        <h3 style="text-align: center;">Delivery Location</h3>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact us:</p>
+        <a href="https://wa.me/+255687154611">WhatsApp</a>
+        <a href="mailto:ayoumedad07@gmail.com">Email</a>
+        <a href="https://www.instagram.com/medardayuob">Instagram</a>
+        <a href="https://twitter.com/medardayuob">Twitter</a>
+        <a href="https://facebook.com/medardayuob">Facebook</a>
+        
+    <script>
+        const cart = new Map();
+
+        function toggleProduct(button) {
+            const product = button.closest(".product-item");
+            const name = product.getAttribute("data-name");
+            const price = parseInt(product.getAttribute("data-price"));
+
+            if (cart.has(name)) {
+                cart.delete(name);
+                button.textContent = "Add to Cart";
+            } else {
+                cart.set(name, price);
+                button.textContent = "Remove from Cart";
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById("cart-items");
+            const totalPriceEl = document.getElementById("total-price");
+            const paymentSection = document.getElementById("payment-section");
+            cartItems.innerHTML = "";
+
+            let total = 0;
+            cart.forEach((price, name) => {
+                total += price;
+                cartItems.innerHTML += `<li>${name} - TZS ${price}</li>`;
+            });
+
+            totalPriceEl.textContent = total;
+
+            if (cart.size > 0) {
+                paymentSection.style.display = "block";
+            } else {
+                paymentSection.style.display = "none";
+            }
+        }
+
+        function searchProducts() {
+            const searchValue = document.getElementById("search").value.toLowerCase();
+            const products = document.querySelectorAll(".product-item");
+
+            products.forEach(product => {
+                const name = product.getAttribute("data-name").toLowerCase();
+                product.style.display = name.includes(searchValue) ? "block" : "none";
+            });
+        }
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -6.7924, lng: 39.2083 },
+                zoom: 12,
+            });
+
+            const marker = new google.maps.Marker({
+                position: { lat: -6.7924, lng: 39.2083 },
+                map: map,
+                title: "Delivery Location",
+            });
+        }
+
+        function loadGoogleMapsAPI() {
+            const script = document.createElement("script");
+            script.src = "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap";
+            script.async = true;
+            document.head.appendChild(script);
+        }
+
+        document.getElementById("payment-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked');
+            if (paymentMethod) {
+                alert(`Payment method selected: ${paymentMethod.value}`);
+            } else {
+                alert("Please select a payment method.");
+            }
+        });
+
+        window.onload = loadGoogleMapsAPI;
+    </script>
+    </footer>
+
+</body>
+</html>

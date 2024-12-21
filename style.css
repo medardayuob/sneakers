@@ -1,0 +1,76 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #FFF8DC;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: #FFF8DC;
+
+}
+
+header .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8a7208;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Login Page */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-inline: 20px;
+    border-radius: 20px;
+
+}
+.form{
+    padding: 98%;
+    border-radius: 98px;
+    background-position: 500%;
+  
+}
+

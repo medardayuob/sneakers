@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sneakers Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url(shoes-6916897_1920.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars due to ripple overflow */
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(44, 62, 80, 0.9);
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #1ABC9C;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: #1ABC9C;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #16A085;
+            transform: scale(1.1);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple-effect 1s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">SneakerStore</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <h1>Welcome to Sneaker Store</h1>
+        <p>Step Into Style with Our Exclusive Collection of Shoes & Sneakers</p>
+        <p>TOP QUALITIES, AFFORDABLE PRICES ALWAYS!</p>
+        <a href="products.html" class="btn">Click Here To Shop Now!</a>
+    </header>
+
+    <!-- Logo Section -->
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
+        <img src="ME.png" alt="logo" style="max-width: 400px; height: auto; display: block;">
+    </div>
+
+    <!-- JavaScript for Ripple Effect -->
+    <script>
+        document.body.addEventListener("click", function (e) {
+            // Create ripple element
+            const ripple = document.createElement("div");
+            ripple.className = "ripple";
+            ripple.style.left = `${e.clientX - 50}px`; // Center ripple on click
+            ripple.style.top = `${e.clientY - 50}px`;
+
+            // Append ripple to body
+            document.body.appendChild(ripple);
+
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
